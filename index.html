@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>client publish system</title>
+  <link rel="stylesheet" href="lib/style.css">
+  <script src="lib/vue-2.4.0.js"> </script>
+</head>
+
+<body>
+  <h1>client publish system</h1>
+
+  <!-- <p>
+    <input type="checkbox" id="accordion-toggle">
+    <label for="accordion-toggle">Keep animations but remove auto-collapse effect </label>
+  </p> -->
+
+  <div id='app' class="container collapse">
+    <details v-for="(item , i) in list">
+      <summary>{{item.name}}</summary>
+      <div class="details-wrapper">
+        <div class="details-styling">
+          CMS : <p> {{item.cms}} </p>
+          SEVER : <p> {{item.sever}} </p>
+          WEB : <p> {{item.web}} </p>
+          CLIENT: <p> {{item.client}} </p>
+          <input class="login-button" type="button" value="发   布" @click="publish(i)">
+          <input class="login-button" type="button" value="修   改" @click="reset(i)">
+          <!-- <input class="login-button" style="float:right"  type="button" value="修   改" @click="reset(i)"> -->
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'Vue msg',
+        list: [
+          { name: 't', cms: 'www.baidu.com', sever: 'www.163.com', web: 'g191.jiuqianle.com/t/', client: 'android', },
+          { name: 'gx', cms: 'gxwww.baidu.com', sever: 'gxwww.163.com', web: 'g191.jiuqianle.com/gx/', client: 'h5', }
+        ]
+      },
+      methods: {
+        publish(index) {
+          console.log('publish : ' + index + '   name ' + this.list[index].name)
+        },
+        reset(index) {
+          console.log('reset   : ' + index + '   sever ' + this.list[index].sever)
+        //   var self = this;
+        //   function prom(index) {
+        //     var cms = prompt("请输入cms", ""); //将输入的内容赋给变量 name ，  
+        //     //这里需要注意的是，prompt有两个参数，前面是提示的话，后面是当对话框出来后，在对话框里的默认值  
+        //     if (cms, index)//如果返回的有内容  
+        //     {
+
+        //       self.list[index].cms = cms;
+        //       self.list[index].sever = sever;
+
+        //     }
+
+        //   }
+        //   prom(index);
+        }
+      },
+    })
+  </script>
+
+  <script src="js/index.js"></script>
+</body>
+
+
+
+</html>
